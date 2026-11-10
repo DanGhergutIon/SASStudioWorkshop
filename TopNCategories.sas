@@ -17,7 +17,7 @@
 %let measure=MPG_City;
 %let measureformat=%str(format=BEST6.);
 %let stat=MEAN;
-%let n=10;
+%let n=5;
 %let category=Origin;
 title "Top Models by MPG_City for each region of Origin";
 footnote;
@@ -38,6 +38,8 @@ select &measure,_FREQ_ into :overall,:numobs
 from summary where _TYPE_=0;
 select count(distinct &category) into :categorycount from summary;
 quit;
+
+%put &=overall &=numobs &=categorycount;
 
 /* sort the results so that we get the TOP values */
 /* rising to the top of the data set */
